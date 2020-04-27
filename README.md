@@ -42,7 +42,7 @@ const NUMBER_A = () => {
 }
 ```
 
-As a result we have a tree:
+Assuming we've described `NUMBER_C` and `SQUARE_ROOT_FUNC`, we will have the following tree:
 ```
 TWO_NUMBERS_MULTIPLIED
  |_ NUMBER_A
@@ -57,7 +57,7 @@ Benifits of such approach:
 * strictness
 * descriptiveness (dependencies are easily read, undestood, and can be visualised)
 * easy to debug (whenever an error accurs you know exactly the position in the tree)
-* easy to test (plug in at any position in the tree and/or supply fixed values to resolve bypassing the natural flow)
+* easy to test (plug in at any position in the tree and/or supply fixed values bypassing the natural flow)
 * A/B testing (supply multiple methods that can resolve the same entity)
 
 ## Available Scripts
