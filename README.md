@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### How things work here
+## How things work here
 
 Everything is organised in as a system of dependencies.
 
