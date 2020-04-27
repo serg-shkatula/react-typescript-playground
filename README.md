@@ -1,5 +1,65 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### How things work here
+
+Everything is organised in as a system of dependencies.
+
+You start with global objective.
+
+Let's say u need to multiply 2 numbers. We could describe this like that:
+```
+// To multiply two numbers
+const TWO_NUMBERS_MULTIPLIED = () => {
+    // I need number A
+    const a = resolve(NUMBER_A);
+    // I need number B
+    const b = resolve(NUMBER_B)
+
+    // Then I use them to return the result
+    // (we return a method that will perfom the nesseccery manipulations
+    return () => (a * b)
+}  
+```
+*`resolve` is the core method that makes the system aware of dependencies and resolves them asynchronously 
+
+Starting from here you can simply provide A and B like that:
+```
+const NUMBER_A = () => {
+    return () => 2
+}
+const NUMBER_B = () => {
+    return () => 3
+}
+```
+
+But if number A needs to be acquired as a result of other manipulations, then we can keep specifying sub-dependencies:
+```
+const NUMBER_A = () => {
+    const c = resolve(NUMBER_C)
+    const squareRootFunc = resolve(SQUARE_ROOT_FUNC)
+
+    return () => return squareRootFunc(c)
+}
+```
+
+As a result we have a tree:
+```
+TWO_NUMBERS_MULTIPLIED
+ |_ NUMBER_A
+ |   |_ NUMBER_C
+ |   |_ SQUARE_ROOT_FUNC
+ |_ NUMBER B
+```
+
+You can acquire any instance - the tree will get constructed from the point of the instance and dependecies will get automatically resolved.
+
+Benifits of such approach:
+* strictness
+* descriptiveness (dependencies are easily read, undestood, and can be visualised)
+* easy to debug (whenever an error accurs you know exactly the position in the tree)
+* easy to test (plug in at any position in the tree and/or supply fixed values to resolve bypassing the natural flow)
+* A/B testing (supply multiple methods that can resolve the same entity)
+
 ## Available Scripts
 
 In the project directory, you can run:

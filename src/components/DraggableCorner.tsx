@@ -24,17 +24,17 @@ type Props = {
     onMouseDown: MouseEventHandler,
 }
 
-const DraggableCorner: FunctionComponent<Props> = ({position, cid, onMouseDown}) => {
+const DraggableCorner: FunctionComponent<Props> = (props) => {
     const classes = useStyles()
 
     const style: CSSProperties = {
-        transform: `translate(${position.x || 0}px,${position.y || 0}px)`
+        transform: `translate(${props.position.x || 0}px,${props.position.y || 0}px)`
     }
 
     return (
         <div
-            data-cid={cid}
-            onMouseDown={onMouseDown}
+            data-cid={props.cid}
+            onMouseDown={props.onMouseDown}
             className={classNames(classes.root)}
             style={style}
         >

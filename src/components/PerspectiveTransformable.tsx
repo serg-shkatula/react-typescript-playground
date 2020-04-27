@@ -1,10 +1,11 @@
 import React, {CSSProperties, FunctionComponent, useEffect, useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import cornersToComponents from "../functions/cornersToComponents";
-import {CornersStateHook, MouseHandlersStateHook, RefStateHook, StringStateHook} from "../types";
+import {CornersStateHook, MouseHandlers, MouseHandlersStateHook, RefStateHook, StringStateHook} from "../types";
 import cornersToCoordinates from "../functions/cornersToCoordinates";
 import dimensionsToCorners from "../functions/dimensionsToCorners";
 import coordinatesToTransformMatrix3d from "../functions/coordinatesToTransformMatrix3d";
+import DraggableCorner from "./DraggableCorner";
 
 type Props = {
     style?: CSSProperties,
@@ -45,7 +46,7 @@ const PerspectiveTransformable: FunctionComponent<Props> = (
 
     useEffect(() => {
         if (!activeCornerId) {
-            setMouseHandlers((prevHandler: any) => {
+            setMouseHandlers((prevHandler: MouseHandlers) => {
                 if (!prevHandler) return;
 
                 document.removeEventListener('mousemove', prevHandler.move)
@@ -96,7 +97,7 @@ const PerspectiveTransformable: FunctionComponent<Props> = (
                 {children}
             </div>
             {modifiedCorners && modifiedCorners.map(
-                cornersToComponents(handleCornerMouseDown)
+                cornersToComponents(handleCornerMouseDown, DraggableCorner)
             )}
         </div>
     )

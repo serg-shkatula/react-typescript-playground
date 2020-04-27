@@ -1,10 +1,12 @@
-import React, {MouseEventHandler} from "react";
-import DraggableCorner from "../components/DraggableCorner";
+import React, {FunctionComponent, MouseEventHandler} from "react";
 
-export default (onCornerMouseDown: MouseEventHandler) =>
+export default (
+    onCornerMouseDown: MouseEventHandler,
+    Component: React.ComponentClass<any> | FunctionComponent<any>
+) =>
     (cornerCoords: number[], index: number) => {
         return (
-            <DraggableCorner
+            <Component
                 key={index.toString()}
                 cid={index.toString()}
                 onMouseDown={onCornerMouseDown}
