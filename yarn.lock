@@ -1894,10 +1894,6 @@ acorn@^7.1.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.1.1.tgz#e35668de0b402f359de515c5482a1ab9f89a69bf"
   integrity sha512-add7dgA5ppRPxCFJoAGfMDi7PIBXq1RtGo7BhbLaxwrXPOmw8gq48Y9ozT01hUKy9byMjlR20EJhu5zlkErEkg==
 
-"acquiring@git+https://73af46f1e504150a0eda5e830d6342151fc6c114:x-oauth-basic@github.com/serg-shkatula/acquiring.git":
-  version "0.0.2"
-  resolved "git+https://73af46f1e504150a0eda5e830d6342151fc6c114:x-oauth-basic@github.com/serg-shkatula/acquiring.git#2653efc1845281ad0b9c4cc6d27dadaaa9326101"
-
 address@1.1.2, address@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/address/-/address-1.1.2.tgz#bf1116c9c758c51b7a933d296b72c221ed9428b6"

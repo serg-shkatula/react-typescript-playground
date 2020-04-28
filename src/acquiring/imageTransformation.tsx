@@ -41,18 +41,18 @@ export function getImage() {
     const renderer = resolve(RENDERER)
 
     return async () => {
-        const image:JSX.Element = await new Promise(resolve => {
-            const img = <img
-                alt={'handler'}
-                draggable={"false"}
-                onLoad={()=>resolve(img)}
-                style={{width: '100%', display: 'block'}}
-                src={userImageSource}
-            />
-            renderer.renderContent(img)
+        await new Promise(resolve => {
+            const preloadingImg = new Image()
+            preloadingImg.onload = () => resolve()
+            preloadingImg.src = userImageSource
         })
 
-        console.log('>>>', image)
+        const image = <img
+            alt={'handler'}
+            draggable={"false"}
+            style={{width: '100%', display: 'block'}}
+            src={userImageSource}
+        />
 
         return image
     }
